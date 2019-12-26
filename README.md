@@ -1,4 +1,4 @@
-# DMVNinja <img align="right" width="120" height="120" src="https://i.imgur.com/1TeTUTm.png">
+# DMVNinja <img align="right" width="120" height="120" src="https://i.imgur.com/PxWPHrX.png">
 
 When I went to register for an appointment in October, my local CA DMV office was booked out all the way until January 2020. Thankfully, there are always a few people who tend to cancel their appointments a few days in advance!
 
