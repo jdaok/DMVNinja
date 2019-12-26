@@ -1,6 +1,6 @@
-# DMVNinja
+# DMVNinja <img align="right" width="120" height="120" src="https://i.imgur.com/1TeTUTm.png">
 
-When I went to register for an appointment in October, my local CA DMV office was booked out all the way until January 2020. Thankfully, there are always a few people who tend to cancel their appointments a few days in advance! 
+When I went to register for an appointment in October, my local CA DMV office was booked out all the way until January 2020. Thankfully, there are always a few people who tend to cancel their appointments a few days in advance!
 
 This bot will constantly check for appointments at your specified DMV office, and always keep you booked for the latest availible behind-the-wheel exam. It includes several features:
 
@@ -11,6 +11,7 @@ This bot will constantly check for appointments at your specified DMV office, an
 * Restart browser and repeat when new earliest appointment is booked
 
 ![](demo.gif)
+
 
 
 ### Getting Started
