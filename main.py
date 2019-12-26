@@ -28,7 +28,6 @@ def fillForm():
     browser.find_element_by_id("telSuffix").send_keys(config.phonenum1)
     browser.find_element_by_xpath('//*[@id="findOffice"]/fieldset/div[5]/input[2]').click()
 
-    # CAPTCHA must be bypassed manually if it appears
 
     for number in range(25):
         try:
@@ -64,20 +63,20 @@ def convertDateStr(strdate_list):
 def register(num):
     browser.find_element_by_xpath('//*[@id="app_content"]/div/a[1]').click()
     if num == 0:
-        print("Register first")
+        print("Booking appointment on first run!")
     else:
-        print("Register 2nd")
+        print("Booking appointment..")
         browser.find_element_by_xpath('// *[ @ id = "ApptForm"] / button').click()
     try:
         browser.find_element_by_id("telephone_method").click()
     except NoSuchElementException:
-        print("Cancel appointment liar.")
+        pass
     browser.find_element_by_xpath('//*[@id="ApptForm"]/fieldset/div[11]/button').click()
     browser.find_element_by_xpath('// *[ @ id = "ApptForm"] / fieldset / div[9] / button').click()
     scrollTo = browser.find_element_by_xpath('//*[@id="app_content"]/div/p[1]/strong')
     browser.execute_script("arguments[0].scrollIntoView();", scrollTo)
     browser.save_screenshot('CurrentlyBooked.png')
-    print("REGISTERED FOR DATE, CHECK CURRENTLYBOOKED.PNG !")
+    print("Done! CHECK CURRENTLYBOOKED.PNG!")
 
 
 def dateFitsPreferences(tempDate):
@@ -104,12 +103,10 @@ def search(date_list, closest):
                 browser.find_element_by_xpath('//*[@id="formId_1"]/div/div[2]/table/tbody/tr/td[2]/p[2]/strong').text,
                 '%b %d, %Y at %I:%M %p').date()
             if dateFitsPreferences(tempDate):
-                print("Fits.")
                 if determineRepeated(tempDate, date_list):
-                    print("Repeated entry.")
                     pass
                 else:
-                    print('New entry found! ////////////////////' + str(tempDate) + ", current list below")
+                    print('New entry found! ////////////////////' + str(tempDate))
                     dateLog = open("dateLog.txt", "a")
                     dateLog.write(str(tempDate) + "\n")
                     dateLog.flush()
@@ -124,20 +121,18 @@ def search(date_list, closest):
                                 register(1)
                                 break
             else:
-                print("Doesnt fit.")
                 pass
             time.sleep(config.refreshInterval)
             print(date_list)
-            print("-----------------------------------------------------------------")
+            print("------------------")
             # "Refresh" Search
             Select(browser.find_element_by_id("requestedTime")).select_by_visible_text('8:00 AM')
             browser.find_element_by_id("checkAvail").click()
 
         except NoSuchElementException:
-            print("Webpage error")
-            time.sleep(7)
+            print("Webpage error. Refreshing...")
+            time.sleep(config.refreshInterval)
             browser.refresh()
-    print("Broke from infinite while loop. Whats next.")
 
 
 date_list = []
@@ -150,6 +145,6 @@ while True:
     browser.get("https://www.dmv.ca.gov/wasapp/foa/driveTest.do")
     fillForm()
     search(date_list, closest)
-    print("RESTARTING BECAUSE REGISTERED:")
+    print("Restarting browser...")
     browser.quit()
     continue
