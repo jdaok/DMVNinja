@@ -11,10 +11,10 @@ This bot will constantly check for appointments at your specified DMV office, an
 * Restart browser and repeat when new earliest appointment is booked
 
 ![](demo.gif)
+(Booked appointment immeadiately because running for first time)
 
 
-
-## Getting Started
+### Getting Started
 
 Set up and install (Work in progress)
 
@@ -24,7 +24,7 @@ Set up and install (Work in progress)
 * Selenium
 * urllib3
 
-You may need to grab the corresponding driver for your browser if the provided one is outdated. This bot has only been tested on Chrome on Windows. Simply place it in the same directory!
+You may need to grab the corresponding driver for your browser if the provided one is outdated. This bot has only been tested on Chrome on Windows. Simply place it in the same directory.
 
 https://chromedriver.chromium.org/downloads
 
@@ -58,14 +58,13 @@ desiredDateRange = 365  # in days. If you are only looking for an appointment wi
 
 Keep in mind:
 * If the motorcycle test is selected, the bot will assume the related safety tests have been completed
-* Make sure the phone number is 10 digits long!
+* Make sure the phone number format is 10 digits long!
 
-
-###CAPTCHA
+### CAPTCHA
 
 On every blue "Continue" button on the DMV site, there is a possibility of CAPTCHA. I have not yet found a work around to bypass this yet (it wouldn't be a good implementation of CAPTCHA then!) If CAPTCHA is encountered on any 'Continue' button, 100 seconds will be provided for the user to manually solve it. The audio CAPTCHA option has always been easier and quicker to solve for me.
 
-###NOTES
+### Notes
 
 * The DMV website will not be able to locate you in the system if the information in the config file is not accurate
 * On first run, an appointment will be booked assuming you don't have one booked already.
