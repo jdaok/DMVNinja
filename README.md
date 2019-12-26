@@ -2,7 +2,7 @@
 
 When I went to register for an appointment in October, my local CA DMV office was booked out all the way until January 2020. Thankfully, there are always a few people who tend to cancel their appointments a few days in advance! 
 
-This bot will constantly check for appointments at your specified DMV office, and always keep you booked for the latest availible one. It includes several features:
+This bot will constantly check for appointments at your specified DMV office, and always keep you booked for the latest availible behind-the-wheel exam. It includes several features:
 
 * Set a range of dates where appointments outside of it are ignored
 * Will store all potential appointments in dateLog.txt
@@ -59,15 +59,20 @@ desiredDateRange = 365  # in days. If you are only looking for an appointment wi
 Keep in mind:
 * If the motorcycle test is selected, the bot will assume the related safety tests have been completed
 * Make sure the phone number is 10 digits long!
-* The DMV website will not be able to locate you in the system if the information is not accurate
 
 
 ###CAPTCHA
 
 On every blue "Continue" button on the DMV site, there is a possibility of CAPTCHA. I have not yet found a work around to bypass this yet (it wouldn't be a good implementation of CAPTCHA then!) If CAPTCHA is encountered on any 'Continue' button, 100 seconds will be provided for the user to manually solve it. The audio CAPTCHA option has always been easier and quicker to solve for me.
 
+##NOTES
 
+* The DMV website will not be able to locate you in the system if the information in the config file is not accurate
+* On first run, an appointment will be booked assuming you don't have one booked already.
+* The DMV servers will sometimes give you a "Webpage requested not availible" error. The bot will refresh the page until appointments can be viewed again.
+* The datelog.txt file is not meant to be interacted with manually.
 
+Good luck on your driving exam!
 
 
 
