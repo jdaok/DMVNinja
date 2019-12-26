@@ -11,7 +11,6 @@ This bot will constantly check for appointments at your specified DMV office, an
 * Restart browser and repeat when new earliest appointment is booked
 
 ![](demo.gif)
-(Booked appointment immeadiately because running for first time)
 
 
 ### Getting Started
@@ -62,7 +61,7 @@ Keep in mind:
 
 ### CAPTCHA
 
-On every blue "Continue" button on the DMV site, there is a possibility of CAPTCHA. I have not yet found a work around to bypass this yet (it wouldn't be a good implementation of CAPTCHA then!) If CAPTCHA is encountered on any 'Continue' button, 100 seconds will be provided for the user to manually solve it. The audio CAPTCHA option has always been easier and quicker to solve for me.
+On every blue "Continue" button on the DMV site, there is a possibility of CAPTCHA. I have not yet found a work around to bypass this yet (it wouldn't be a good implementation of CAPTCHA then!) If CAPTCHA is encountered on any 'Continue' button, 100 seconds will be provided for the user to manually solve it. (shown in demo.gif) The audio CAPTCHA option has always been easier and quicker to solve for me. If CAPTCHA is failed, the bot must be manually restarted.
 
 ### Notes
 
