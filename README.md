@@ -1,6 +1,6 @@
 # DMVNinja <img align="right" width="120" height="120" src="https://i.imgur.com/PxWPHrX.png">
 
-When I went to register for an appointment in October, my local CA DMV office was booked out all the way until January 2020. Thankfully, there are always a few people who tend to cancel their appointments a few days in advance!
+When I went to register for an appointment in October, my local CA DMV office was booked out all the way until January 2020. Thankfully, there are always a few people who tend to cancel their appointments a few days in advance.
 
 This bot will constantly check for appointments at your specified DMV office, and always keep you booked for the latest availible behind-the-wheel exam. It includes several features:
 
@@ -16,7 +16,7 @@ This bot will constantly check for appointments at your specified DMV office, an
 
 ### Getting Started
 
-Set up and install (Work in progress)
+Set up and install (**Work in progress**)
 
 ### Requirements
 
@@ -58,18 +58,17 @@ desiredDateRange = 365  # in days. If you are only looking for an appointment wi
 
 Keep in mind:
 * If the motorcycle test is selected, the bot will assume the related safety tests have been completed
-* Make sure the phone number format is 10 digits long!
+* Make sure the phone number format is 10 digits long
 
-### CAPTCHA
+### Recaptcha
 
-On every blue "Continue" button on the DMV site, there is a possibility of CAPTCHA. I have not yet found a work around to bypass this yet (it wouldn't be a good implementation of CAPTCHA then!) If CAPTCHA is encountered on any 'Continue' button, 100 seconds will be provided for the user to manually solve it. (shown in demo.gif) The audio CAPTCHA option has always been easier and quicker to solve for me. If CAPTCHA is failed, the bot must be manually restarted.
+CA DMV recently introduced Google Recaptcha to avoid being polled by program. This bot does not yet include a work around to bypass this. If Recaptcha is encountered on any 'Continue' button, 100 seconds will be provided for the user to manually solve it. (shown in demo.gif) The audio Recaptcha option has always been easier and quicker to solve for me. If Recaptcha is failed, the bot must be manually restarted.
 
 ### Notes
 
 * The DMV website will not be able to locate you in the system if the information in the config file is not accurate
 * On first run, an appointment will be booked assuming you don't have one booked already.
 * The DMV servers will sometimes give you a "Webpage requested not availible" error. The bot will refresh the page until appointments can be viewed again.
-* The datelog.txt file is not meant to be interacted with manually.
 
 Good luck on your driving exam!
 
