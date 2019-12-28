@@ -4,8 +4,8 @@ When I went to register for an appointment in October, my local CA DMV office wa
 
 This bot will constantly check for appointments at your specified DMV office, and always keep you booked for the latest availible behind-the-wheel exam. It includes several features:
 
-* Set a range of dates where appointments outside of it are ignored
 * Will store all potential appointments in dateLog.txt
+* Set a range of dates where appointments outside of it are ignored
 * When a new closest appointment is found, the previous closest one will be cancelled and the new one will be booked instead
 * Saves screenshot of appointment confirmation 'CurrentlyBooked.png' for easy access
 * Restart browser and repeat when new earliest appointment is booked
@@ -31,9 +31,12 @@ pip install -r requirements.txt
 * Selenium
 * urllib3
 
-You might have to grab the corresponding driver for your browser if the provided one is outdated. This bot has only been tested on Chrome on Windows.
+You might have to grab the corresponding driver for your browser and OS if the provided one doesn't work. This bot has only been tested on Chrome & Firefox on Windows.
 
-https://chromedriver.chromium.org/downloads
+https://chromedriver.chromium.org/downloads (Chrome)
+https://github.com/mozilla/geckodriver/releases (Firefox)
+
+Simply place the driver in the project directory.
 
 
 ##### Configuration
@@ -58,16 +61,16 @@ phonenum1 = "5101234567"
 
 # //////////////////////
 
+browser = 'Chrome'  # 'Chrome' or 'Firefox'
 refreshInterval = 15  # in seconds
 desiredDateRange = 365  # in days. If you are only looking for an appointment within the next week, set to 7. If you have no preference, set to 365.
-
 ```
 
 Keep in mind:
 * If the motorcycle test is selected, the bot will assume the related safety tests have been completed
-* Make sure the phone number format is 10 digits long
+* Phone number format is 10 digits long
 
-Save the config file, and now you can run the bot.
+Save, and now you can run the bot.
 ```
 python main.py
 ```
@@ -78,7 +81,7 @@ CA DMV recently introduced Google Recaptcha. This bot does not yet include a wor
 
 ### Notes
 
-* On first run, an appointment will be booked assuming you don't have one booked already.
+* On first run, an appointment will be booked assuming you don't have one booked already. If you do, either cancel it or add it to a new line in dateLog.txt before ruunning.
 * The DMV servers will sometimes give you a "Webpage requested not available" error. The bot will refresh the page until appointments can be viewed again.
 * Only used for personal non-commercial purposes
 

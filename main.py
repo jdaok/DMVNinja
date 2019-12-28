@@ -147,7 +147,10 @@ closest = 0
 today = date.today
 
 while True:
-    browser = webdriver.Chrome()
+    if config.browser == "Firefox":
+        browser = webdriver.Firefox()
+    else:
+        browser = webdriver.Chrome()
     browser.set_page_load_timeout(10)
     browser.get("https://www.dmv.ca.gov/wasapp/foa/driveTest.do")
     fillForm()
