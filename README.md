@@ -16,20 +16,27 @@ This bot will constantly check for appointments at your specified DMV office, an
 
 ### Getting Started
 
-Set up and install (**Work in progress**)
+Clone the repository.
 
-### Requirements
+```
+git clone https://github.com/jkdao/DMVNinja.git
+```
+Download the requirements (you may need to install pip)
+```
+cd DMVNinja
+pip install -r requirements.txt
+```
 
 * Python 3+
 * Selenium
 * urllib3
 
-You may need to grab the corresponding driver for your browser if the provided one is outdated. This bot has only been tested on Chrome on Windows. Simply place it in the same directory.
+You might have to grab the corresponding driver for your browser if the provided one is outdated. This bot has only been tested on Chrome on Windows.
 
 https://chromedriver.chromium.org/downloads
 
 
-### Configuration
+##### Configuration
 
 Open up the config file and change the values accordingly. 
 
@@ -60,15 +67,21 @@ Keep in mind:
 * If the motorcycle test is selected, the bot will assume the related safety tests have been completed
 * Make sure the phone number format is 10 digits long
 
+Save the config file, and now you can run the bot.
+```
+python main.py
+```
+
 ### Recaptcha
 
-CA DMV recently introduced Google Recaptcha to avoid being polled by program. This bot does not yet include a work around to bypass this. If Recaptcha is encountered on any 'Continue' button, 100 seconds will be provided for the user to manually solve it. (shown in demo.gif) The audio Recaptcha option has always been easier and quicker to solve for me. If Recaptcha is failed, the bot must be manually restarted.
+CA DMV recently introduced Google Recaptcha. This bot does not yet include a work around to bypass this. If Recaptcha is encountered on any 'Continue' button, 100 seconds will be provided for the user to manually solve it. (shown in demo.gif) The audio Recaptcha option has always been easier and quicker to solve for me. If Recaptcha is failed, the bot must be manually restarted.
 
 ### Notes
 
-* The DMV website will not be able to locate you in the system if the information in the config file is not accurate
 * On first run, an appointment will be booked assuming you don't have one booked already.
-* The DMV servers will sometimes give you a "Webpage requested not availible" error. The bot will refresh the page until appointments can be viewed again.
+* The DMV servers will sometimes give you a "Webpage requested not available" error. The bot will refresh the page until appointments can be viewed again.
+* Only used for personal non-commercial purposes
+
 
 Good luck on your driving exam!
 
