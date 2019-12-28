@@ -18,5 +18,5 @@ phonenum1 = "5101234567"
 # //////////////////////
 
 browser = 'Chrome'  # 'Chrome' or 'Firefox'
-refreshInterval = 15  # in seconds
-desiredDateRange = 365  # in days. If you are only looking for an appointment within the next week, set to 7. If you have no preference, set to 365.
+refreshInterval = 45  # in seconds
+desiredDateRange = 7  # in days. If you are only looking for an appointment within the next week, set to 7. If you have no preference, set to 365.
