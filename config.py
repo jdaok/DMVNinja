@@ -19,4 +19,7 @@ phonenum1 = "5101234567"
 
 browser = 'Chrome'  # 'Chrome' or 'Firefox'
 refreshInterval = 45  # in seconds
-desiredDateRange = 7  # in days. If you are only looking for an appointment within the next week, set to 7. If you have no preference, set to 365.
+
+#Specify dates to exclude from appointment search
+earliestDate = datetime(1954, 1, 1).date() #formatted year, month, day. No preference => set to = date.today()
+latestDate = datetime(9999, 12, 31).date() #No preference => set to = datetime(9999, 12, 31).date()
