@@ -43,7 +43,7 @@ def fillForm():  # Filling initial DMV form before checking for appointments acc
 
 # Checks if tempDate can already be found in date_list. If it is found, tempDate will be ignored
 def determineRepeated(tempDate, date_list):
-    if (len(date_list) == 0):
+    if len(date_list) == 0:
         return False
     else:
         for i in range(len(date_list)):
@@ -66,16 +66,13 @@ def convertDateStr(strdate_list):
 # Automates appointment booking after new closest appointment meets requirements
 def register(num):
     browser.find_element_by_xpath('//*[@id="app_content"]/div/a[1]').click()
-    if num == 0:
-        print("Booking appointment on first run!")  # No "cancel previous appointment" if running for the first time
-    else:
-        print("Booking appointment..")
-        browser.find_element_by_xpath(
-            '// *[ @ id = "ApptForm"] / button').click()  # Clicks "cancel previous appointment"
+    print("Booking appointment...")  # No "cancel previous appointment" if running for the first time
     try:
-        browser.find_element_by_id("telephone_method").click()
+        print("Cancelling previous appointment...")
+        browser.find_element_by_xpath('//*[@id="ApptForm"]/button').click()  # Clicks "cancel previous appointment"
     except NoSuchElementException:
-        pass
+        print("First run!")
+    browser.find_element_by_xpath('//*[@id="telephone_method"]').click()
     browser.find_element_by_xpath('//*[@id="ApptForm"]/fieldset/div[11]/button').click()
     browser.find_element_by_xpath('// *[ @ id = "ApptForm"] / fieldset / div[9] / button').click()
     scrollTo = browser.find_element_by_xpath('//*[@id="app_content"]/div/p[1]/strong')
@@ -86,8 +83,7 @@ def register(num):
 
 # Checks to see if appointment date falls in desiredDateRange in config.py
 def dateFitsPreferences(tempDate):
-    delta = tempDate - today()
-    if delta.days <= config.desiredDateRange:
+    if config.earliestDate <= tempDate <= config.latestDate:
         return True
     else:
         return False
@@ -95,6 +91,7 @@ def dateFitsPreferences(tempDate):
 
 def search(date_list, closest):
     while True:
+        browser.refresh()
         print(datetime.today().strftime("%I:%M:%S %p"))
         try:
             print(date_list)
