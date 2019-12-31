@@ -22,4 +22,4 @@ refreshInterval = 45  # in seconds
 
 #Specify dates to exclude from appointment search
 earliestDate = datetime(1954, 1, 1).date() #formatted year, month, day. No preference => set to = date.today()
-lalatestDate = datetime(9999, 12, 31).date() #No preference => set to = datetime(9999, 12, 31).date()
+latestDate = datetime(9999, 12, 31).date() #No preference => set to = datetime(9999, 12, 31).date()
