@@ -5,6 +5,9 @@ import time
 import sys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+
 
 
 def fillForm():  # Filling initial DMV form before checking for appointments according to config.py
@@ -32,13 +35,12 @@ def fillForm():  # Filling initial DMV form before checking for appointments acc
     # RECAPTCHA must be bypassed manually if it is found. 100 seconds given (checks for completion every 4 seconds)
     for number in range(25):
         try:
-            browser.find_element_by_xpath('//*[@id="formId_1"]/div/div[2]/table/tbody/tr/td[2]/p[2]/strong')
+            browser.find_element_by_xpath('//*[@id="formId_1"]/div/div[2]/table/tbody/tr/td[1]')
             print('CAPTCHA passed')
             break
         except NoSuchElementException:
             print(str(100 - (number * 4)) + ' seconds remaining for CAPTCHA!')
             time.sleep(4)
-            pass
 
 
 # Checks if tempDate can already be found in date_list. If it is found, tempDate will be ignored
@@ -104,6 +106,7 @@ def search(date_list, closest):
             else:
                 closest = min(date_list)
 
+
             tempDate = datetime.strptime(
                 browser.find_element_by_xpath('//*[@id="formId_1"]/div/div[2]/table/tbody/tr/td[2]/p[2]/strong').text,
                 '%b %d, %Y at %I:%M %p').date()
@@ -139,6 +142,9 @@ def search(date_list, closest):
 
 # ////////////////////////////////////////////////////////////////////////////////
 
+from selenium.webdriver.common.action_chains import ActionChains
+
+
 date_list = []
 closest = 0
 today = date.today
@@ -148,7 +154,12 @@ while True:
         browser = webdriver.Firefox()
     else:
         browser = webdriver.Chrome()
-    browser.set_page_load_timeout(10)
+        browser.get(
+            "https://chrome.google.com/webstore/detail/buster-captcha-solver-for/mpbjkejclgfgadiemmefgebjfooflfhl?hl=en")
+        browser.set_page_load_timeout(10)
+        time.sleep(2)
+        browser.find_element_by_xpath('/html/body/div[5]/div[2]/div/div/div[2]/div[2]/div/div/div/div').click()
+    time.sleep(3)
     browser.get("https://www.dmv.ca.gov/wasapp/foa/driveTest.do")
     fillForm()
     search(date_list, closest)
