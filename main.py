@@ -134,7 +134,14 @@ def search(date_list, closest):
             browser.find_element_by_id("checkAvail").click()
 
         except NoSuchElementException:
-            print("Webpage error. Refreshing...")
+            try:
+                # DMV only holds appointments for 3 months in advance.
+                browser.find_element_by_xpath('//*[@id="formId_1"]/div/div[2]/table/tbody/tr/td[1]')
+                print("Bo availible appointments currently. Refreshing...")
+            except NoSuchElementException():
+                print("Webpage error. Refreshing...")
+
+
             time.sleep(config.refreshInterval)
             browser.refresh()
         print("------------------")
