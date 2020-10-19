@@ -19,7 +19,7 @@ This bot will constantly check for appointments at your specified DMV office, an
 Clone the repository.
 
 ```
-git clone https://github.com/jkdao/DMVNinja.git
+git clone https://github.com/jdaok/DMVNinja.git
 ```
 Download the requirements (you may need to install pip)
 ```
